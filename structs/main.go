@@ -24,8 +24,8 @@ func main() {
 		},
 	}
 
-	jimPointer := &jim
-	jimPointer.updateName("Alex")
+	// jimPointer := &jim
+	jim.updateName("Alex")
 	jim.print()
 
 }
