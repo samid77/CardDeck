@@ -33,5 +33,5 @@ func TestSaveToDeckAndNewDeckFromFile(t *testing.T) {
 		t.Errorf("Expected 16 cards in deck, but got %v", len(loadedDeck))
 	}
 
-	// os.Remove("_decktesting")
+	os.Remove("_decktesting")
 }
