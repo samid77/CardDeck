@@ -3,13 +3,14 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 type deck []string
 
-//Create new deck of cards and return list of cards/deck
 func newDeck() deck {
 	cards := deck{}
 
@@ -25,14 +26,12 @@ func newDeck() deck {
 	return cards
 }
 
-//Log out all contents of a deck of cards
 func (d deck) print() {
 	for i, card := range d {
 		fmt.Println(i, card)
 	}
 }
 
-// deal the cards, 3 cards
 func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
 }
@@ -55,4 +54,15 @@ func newDeckFromFile(filename string) deck {
 	s := strings.Split(string(bs), ",")
 	return deck(s)
 
+}
+
+func (d deck) shuffle() {
+	source := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(source)
+
+	for idx := range d {
+		newPosition := r.Intn(len(d) - 1)
+
+		d[idx], d[newPosition] = d[newPosition], d[idx]
+	}
 }
