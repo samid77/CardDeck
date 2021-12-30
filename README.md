@@ -1,2 +1,2 @@
 # CardDeck
-simple golang exercise of slice, types and etc using a simple use case
+Golang fundamental sandbox for topics such as data types, structs, map, pointer, channel and goroutines
